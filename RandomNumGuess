@@ -1,0 +1,35 @@
+import random
+
+number = random.randint(1,100)
+difficulty = input("Choose a difficulty\nEasy Hard").lower()
+if difficulty == "easy":
+    attempts = 10
+elif difficulty == "hard":
+    attempts = 5
+else:
+    attempts = 0
+    print("You have chosen an invalid option. Please restart the program and choose a valid option")
+    print("You have", attempts, "attempts remaining.")
+def guess_mech():
+    global guess
+    guess = int(input("Guess a number between 1 and 100"))
+
+while attempts > 0:
+    guess_mech()
+    if guess == number:
+        print("You win!")
+        win = "true"
+        break
+    elif guess > number:
+        print ("Too High")
+        attempts -= 1
+        print("You have", attempts, "attempts remaining.")
+        win = "false"
+    elif guess < number:
+        print("Too Low")
+        attempts -= 1
+        print("You have", attempts, "attempts remaining.")
+        win = "false"
+if win != "true":
+    print("You Lose!")
+    print("The number was",number")
